@@ -1,401 +1,420 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DÉMOGRAPHIE – Espace Étudiant</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #2b2685 0%, #3b50a0 40%, #217088 100%);
-      color: #1f2937;
-      display: flex;
-      flex-direction: column;
-    }
+    <title>Démographie – Espace Étudiant</title>
 
-    /* Page d'accueil / Connexion */
-    #login-page {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      padding: 20px;
-    }
-
-    .login-card {
-      background: #ffffff;
-      width: 100%;
-      max-width: 500px;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .login-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .login-header h1 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #111827;
-    }
-
-    .badge-id {
-      background-color: #0d9488;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .subtitle {
-      color: #6b7280;
-      font-size: 0.85rem;
-      margin-top: -15px;
-      margin-bottom: 25px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      color: #1f2937;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 1rem;
-      outline: none;
-      text-transform: uppercase;
-      background-color: #f9fafb;
-    }
-
-    .form-group input:focus {
-      border-color: #3b82f6;
-      background-color: #fff;
-    }
-
-    .input-help {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-top: 6px;
-    }
-
-    .btn-primary {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(90deg, #3730a3, #312e81);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.95;
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.6);
-    }
-
-    /* Espace Étudiant (Tableau de bord) */
-    #dashboard-page {
-      display: none;
-      flex-direction: column;
-      min-height: 100vh;
-      background: #f4f6fb;
-    }
-
-    .navbar {
-      background: linear-gradient(90deg, #2e1065 0%, #3b0764 50%, #065f46 100%);
-      color: white;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .navbar-title {
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .user-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: rgba(255,255,255,0.15);
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .btn-nav {
-      background: #3b0764;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
-
-    .dashboard-container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 15px;
-      width: 100%;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    .profile-card h2 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .profile-card p {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-bottom: 15px;
-    }
-
-    .btn-small {
-      background-color: #3730a3;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #111827;
-    }
-
-    .section-subtitle {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-bottom: 15px;
-    }
-
-    .sujet-card {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 12px;
-    }
-
-    .sujet-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .badge-status {
-      background-color: #d1fae5;
-      color: #065f46;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 12px;
-    }
-
-    .sujet-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 6px;
-    }
-
-    .sujet-meta {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-
-    .btn-start {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      background: linear-gradient(90deg, #3730a3, #312e81);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .empty-state {
-      background: #f9fafb;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- Écran de Connexion -->
-  <div id="login-page">
-    <div style="width: 100%; max-width: 500px;">
-      <div class="login-card">
-        <div class="login-header">
-          <h1>DÉMOGRAPHIE</h1>
-          <span class="badge-id">Identification</span>
-        </div>
-        <p class="subtitle">Exercices en ligne · Espace étudiant</p>
+    <!-- ============================= -->
+    <!-- PAGE DE CONNEXION -->
+    <!-- ============================= -->
 
-        <form id="login-form">
-          <div class="form-group">
-            <label for="fullname">Nom et Prénoms</label>
-            <input type="text" id="fullname" placeholder="Ex: SETO FLORENT" required>
-            <p class="input-help">Saisissez votre nom et vos prénoms.</p>
-          </div>
-          <button type="submit" class="btn-primary">Accéder à mes exercices</button>
-        </form>
-      </div>
-      <p class="footer-note">/evaluations - base locale synchronisée</p>
+    <div id="loginPage" class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-header">
+
+                <div>
+                    <h1>DEMOGRAPHIE</h1>
+                    <p>Exercices en ligne · Espace étudiant</p>
+                </div>
+
+                <span class="identification">
+                    Identification
+                </span>
+
+            </div>
+
+            <div class="separator"></div>
+
+            <label for="studentName">
+                Nom et Prénoms
+            </label>
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Saisissez votre nom et vos prénoms."
+                autocomplete="name"
+            >
+
+            <small>
+                Saisissez votre nom et vos prénoms.
+            </small>
+
+            <button
+                class="main-button"
+                onclick="login()"
+            >
+                Accéder à mes exercices
+            </button>
+
+        </div>
+
+        <div class="login-footer">
+            /evaluations · base locale synchronisée
+        </div>
+
     </div>
-  </div>
 
-  <!-- Écran Tableau de Bord Étudiant -->
-  <div id="dashboard-page">
-    <header class="navbar">
-      <div class="navbar-title">DÉMOGRAPHIE – Espace Étudiant</div>
-      <div class="user-info">
-        <span class="user-name" id="nav-user-name">ETUDIANT</span>
-        <button class="btn-nav">Paramètres</button>
-        <button class="btn-nav" id="btn-logout">Déconnexion</button>
-      </div>
-    </header>
 
-    <main class="dashboard-container">
-      <!-- Carte Profil -->
-      <div class="card profile-card">
-        <h2 id="profile-name">NOM PRÉNOMS</h2>
-        <p>Nom et Prénoms : <span id="profile-fullname-text">NOM PRÉNOMS</span></p>
-        <button class="btn-small">Mes sujets</button>
-      </div>
+    <!-- ============================= -->
+    <!-- APPLICATION -->
+    <!-- ============================= -->
 
-      <!-- Liste des sujets -->
-      <div class="card">
-        <h3 class="section-title">Sujets disponibles</h3>
-        <p class="section-subtitle">Choisissez l'un des sujets de démographie. Il n'y a pas de chronomètre : toutes les questions du sujet s'affichent directement.</p>
+    <div id="app" class="hidden">
 
-        <!-- Sujet 1 -->
-        <div class="sujet-card">
-          <div class="sujet-header">
-            <span class="badge-status">Disponible</span>
-          </div>
-          <div class="sujet-title">Sujet 1 – Évaluation de démographie 2023</div>
-          <div class="sujet-meta">Matière : Démographie – Licence 3 IDF / SFM</div>
-          <div class="sujet-meta">Questions : 30 – toutes affichées sur une seule page</div>
-          <button class="btn-start" onclick="alert('Lancement du Sujet 1...')">Commencer</button>
-        </div>
+        <!-- NAVIGATION -->
 
-        <!-- Sujet 2 -->
-        <div class="sujet-card">
-          <div class="sujet-header">
-            <span class="badge-status">Disponible</span>
-          </div>
-          <div class="sujet-title">Sujet 2 – Évaluation de démographie 2021–2022</div>
-          <div class="sujet-meta">Matière : Démographie – Licence 3 IDF / SFM</div>
-          <div class="sujet-meta">Questions : 34 – toutes affichées sur une seule page</div>
-          <button class="btn-start" onclick="alert('Lancement du Sujet 2...')">Commencer</button>
-        </div>
-      </div>
+        <header class="navbar">
 
-      <!-- Évaluations effectuées -->
-      <div class="card">
-        <h3 class="section-title">Évaluations effectuées</h3>
-        <p class="section-subtitle">Vous pouvez consulter votre note et le résumé de l'évaluation.</p>
-        <div class="empty-state">
-          Aucune évaluation effectuée pour le moment.
-        </div>
-      </div>
-    </main>
-  </div>
+            <div class="nav-title">
+                DEMOGRAPHIE – Espace Étudiant
+            </div>
 
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const loginPage = document.getElementById('login-page');
-    const dashboardPage = document.getElementById('dashboard-page');
-    const fullnameInput = document.getElementById('fullname');
-    
-    const navUserName = document.getElementById('nav-user-name');
-    const profileName = document.getElementById('profile-name');
-    const profileFullnameText = document.getElementById('profile-fullname-text');
-    const btnLogout = document.getElementById('btn-logout');
+            <div class="nav-right">
 
-    loginForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = fullnameInput.value.trim().toUpperCase();
-      if (name) {
-        navUserName.textContent = name + " |";
-        profileName.textContent = name;
-        profileFullnameText.textContent = name;
+                <span id="navStudentName"></span>
 
-        loginPage.style.display = 'none';
-        dashboardPage.style.display = 'flex';
-      }
-    });
+                <button onclick="showSettings()">
+                    ⚙ Paramètres
+                </button>
 
-    btnLogout.addEventListener('click', function() {
-      dashboardPage.style.display = 'none';
-      loginPage.style.display = 'flex';
-      fullnameInput.value = '';
-    });
-  </script>
+                <button onclick="logout()">
+                    Déconnexion
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENU PRINCIPAL -->
+
+        <main class="container">
+
+
+            <!-- ============================= -->
+            <!-- ESPACE ÉTUDIANT -->
+            <!-- ============================= -->
+
+            <section id="homePage">
+
+                <div class="student-card">
+
+                    <h2 id="welcomeName">
+                        SETO FLORENT
+                    </h2>
+
+                    <p>
+                        Nom et Prénoms :
+                        <strong id="displayName">
+                            SETO FLORENT
+                        </strong>
+                    </p>
+
+                    <button
+                        class="purple-small-button"
+                        onclick="scrollToSubjects()"
+                    >
+                        Mes sujets
+                    </button>
+
+                </div>
+
+
+                <!-- SUJETS -->
+
+                <div class="subjects-card">
+
+                    <h2>
+                        Sujets disponibles
+                    </h2>
+
+                    <p class="description">
+                        Choisissez l’un des deux sujets de démographie.
+                        Il n’y a pas de chronomètre : toutes les questions
+                        du sujet s’affichent directement.
+                    </p>
+
+
+                    <!-- SUJET 1 -->
+
+                    <div class="subject">
+
+                        <div class="available">
+                            Disponible
+                        </div>
+
+                        <h3>
+                            Sujet 1 – Évaluation de démographie 2023
+                        </h3>
+
+                        <p>
+                            <strong>Matière :</strong>
+                            Démographie – Licence 3 IDE / SFM
+                        </p>
+
+                        <p>
+                            <strong>Questions :</strong>
+                            30 – toutes affichées sur une seule page
+                        </p>
+
+                        <button
+                            class="subject-button"
+                            onclick="startExam(1)"
+                        >
+                            Commencer
+                        </button>
+
+                    </div>
+
+
+                    <!-- SUJET 2 -->
+
+                    <div class="subject">
+
+                        <div class="available">
+                            Disponible
+                        </div>
+
+                        <h3>
+                            Sujet 2 – Évaluation de démographie 2021–2022
+                        </h3>
+
+                        <p>
+                            <strong>Matière :</strong>
+                            Démographie – Licence 3 IDE / SFM
+                        </p>
+
+                        <p>
+                            <strong>Questions :</strong>
+                            34 – toutes affichées sur une seule page
+                        </p>
+
+                        <button
+                            class="subject-button"
+                            onclick="startExam(2)"
+                        >
+                            Commencer
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ÉVALUATIONS EFFECTUÉES -->
+
+                <div class="history-card">
+
+                    <h2>
+                        Évaluations effectuées
+                    </h2>
+
+                    <p class="description">
+                        Vous pouvez consulter votre note et le résumé
+                        de l’évaluation.
+                    </p>
+
+                    <div id="history">
+                        <div class="empty-history">
+                            Aucune évaluation effectuée pour le moment.
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- PAGE ÉVALUATION -->
+            <!-- ============================= -->
+
+            <section id="examPage" class="hidden">
+
+                <div class="exam-header">
+
+                    <button
+                        class="back-button"
+                        onclick="backHome()"
+                    >
+                        ← Retour
+                    </button>
+
+                    <h2 id="examTitle">
+                        Évaluation de démographie
+                    </h2>
+
+                    <p>
+                        Toutes les questions sont affichées ci-dessous.
+                    </p>
+
+                    <div class="no-timer">
+                        ⏱ Aucun chronomètre
+                    </div>
+
+                </div>
+
+                <form id="examForm">
+
+                    <div id="questionsContainer"></div>
+
+                    <button
+                        type="button"
+                        class="finish-button"
+                        onclick="finishExam()"
+                    >
+                        Terminer l'évaluation
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- PAGE RÉSULTATS -->
+            <!-- ============================= -->
+
+            <section id="resultPage" class="hidden">
+
+                <div class="result-card">
+
+                    <div class="result-icon">
+                        ✓
+                    </div>
+
+                    <h2>
+                        Évaluation terminée
+                    </h2>
+
+                    <p>
+                        Voici votre résultat.
+                    </p>
+
+                    <div class="score-box">
+
+                        <span>
+                            Votre résultat
+                        </span>
+
+                        <strong id="score">
+                            0 / 30
+                        </strong>
+
+                        <small id="percentage">
+                            0 %
+                        </small>
+
+                    </div>
+
+                    <div class="statistics">
+
+                        <div>
+                            <strong id="correctAnswers">
+                                0
+                            </strong>
+                            <span>
+                                Bonnes réponses
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong id="wrongAnswers">
+                                0
+                            </strong>
+                            <span>
+                                Mauvaises réponses
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong id="totalAnswers">
+                                30
+                            </strong>
+                            <span>
+                                Questions
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="main-button result-button"
+                        onclick="backHome()"
+                    >
+                        Retour à mes sujets
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- PARAMÈTRES -->
+            <!-- ============================= -->
+
+            <section id="settingsPage" class="hidden">
+
+                <div class="settings-card">
+
+                    <button
+                        class="back-button"
+                        onclick="backHome()"
+                    >
+                        ← Retour
+                    </button>
+
+                    <h2>
+                        Paramètres
+                    </h2>
+
+                    <label>
+                        Nom et Prénoms
+                    </label>
+
+                    <input
+                        type="text"
+                        id="settingsName"
+                    >
+
+                    <label class="switch-label">
+                        <input
+                            type="checkbox"
+                            id="darkMode"
+                            onchange="toggleDarkMode()"
+                        >
+
+                        Mode sombre
+                    </label>
+
+                    <button
+                        class="main-button"
+                        onclick="saveSettings()"
+                    >
+                        Enregistrer
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
