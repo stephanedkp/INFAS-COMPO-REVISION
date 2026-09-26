@@ -1,0 +1,1232 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #25243f;
+    background: #eef5fb;
+}
+
+
+/* =====================================
+   PAGE DE CONNEXION
+===================================== */
+
+.login-page {
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #302078 0%,
+            #4233bd 45%,
+            #087d85 100%
+        );
+}
+
+
+.login-card {
+
+    width: 100%;
+    max-width: 650px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+
+.login-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.login-header h1 {
+
+    font-size: 27px;
+
+    color: #27264e;
+
+    margin-bottom: 7px;
+}
+
+
+.login-header p {
+
+    color: #77788a;
+
+    font-size: 15px;
+}
+
+
+.identification {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16b99f,
+            #0a877c
+        );
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 25px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+.separator {
+
+    height: 1px;
+
+    background: #e3e3eb;
+
+    margin: 25px 0;
+}
+
+
+.login-card label,
+.settings-card label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+}
+
+
+.login-card input,
+.settings-card input {
+
+    width: 100%;
+
+    height: 60px;
+
+    border: 1px solid #c8c5f4;
+
+    border-radius: 15px;
+
+    padding: 0 16px;
+
+    font-size: 17px;
+
+    outline: none;
+
+    color: #363563;
+
+    background: #ffffff;
+}
+
+
+.login-card input:focus,
+.settings-card input:focus {
+
+    border-color: #5145df;
+
+    box-shadow:
+        0 0 0 3px rgba(81, 69, 223, 0.1);
+}
+
+
+.login-card small {
+
+    display: block;
+
+    color: #858594;
+
+    margin-top: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   BOUTONS
+===================================== */
+
+.main-button,
+.subject-button,
+.finish-button {
+
+    width: 100%;
+
+    border: none;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5143e1,
+            #392b92
+        );
+
+    box-shadow:
+        0 8px 18px rgba(70, 55, 210, 0.25);
+
+    transition: 0.2s;
+}
+
+
+.main-button {
+
+    height: 54px;
+}
+
+
+.main-button:hover,
+.subject-button:hover,
+.finish-button:hover {
+
+    transform: translateY(-1px);
+
+    filter: brightness(1.06);
+}
+
+
+.purple-small-button {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5143df,
+            #392b92
+        );
+
+    color: white;
+
+    padding: 12px 30px;
+
+    border-radius: 9px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =====================================
+   FOOTER CONNEXION
+===================================== */
+
+.login-footer {
+
+    color: rgba(255,255,255,0.7);
+
+    margin-top: 20px;
+
+    font-size: 12px;
+}
+
+
+/* =====================================
+   UTILITAIRE
+===================================== */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar {
+
+    min-height: 64px;
+
+    padding: 10px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #30207e,
+            #4538d1,
+            #168f91
+        );
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,0.12);
+}
+
+
+.nav-title {
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.nav-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.nav-right span {
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.nav-right button {
+
+    border: none;
+
+    background: rgba(255,255,255,0.15);
+
+    color: white;
+
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   CONTENEUR
+===================================== */
+
+.container {
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 28px 20px 70px;
+}
+
+
+/* =====================================
+   CARTE ÉTUDIANT
+===================================== */
+
+.student-card,
+.subjects-card,
+.history-card,
+.exam-header,
+.question-card,
+.result-card,
+.settings-card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 25px rgba(44, 56, 90, 0.07);
+}
+
+
+.student-card {
+
+    padding: 28px;
+
+    margin-bottom: 20px;
+}
+
+
+.student-card h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+
+    color: #202035;
+}
+
+
+.student-card p {
+
+    color: #7b7b87;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   SUJETS
+===================================== */
+
+.subjects-card {
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+.subjects-card h2,
+.history-card h2 {
+
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+
+.description {
+
+    color: #777985;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+.subject {
+
+    border: 1px solid #eeeeF4;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    margin-top: 12px;
+
+    background: #ffffff;
+}
+
+
+.available {
+
+    display: inline-block;
+
+    background: #dff7e8;
+
+    color: #22884a;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    margin-bottom: 12px;
+}
+
+
+.subject h3 {
+
+    font-size: 20px;
+
+    margin-bottom: 12px;
+
+    color: #252438;
+}
+
+
+.subject p {
+
+    color: #6e6e7a;
+
+    font-size: 13px;
+
+    margin: 7px 0;
+}
+
+
+.subject-button {
+
+    height: 48px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================
+   HISTORIQUE
+===================================== */
+
+.history-card {
+
+    padding: 25px;
+}
+
+
+.empty-history {
+
+    border: 1px solid #eeeeF3;
+
+    background: #fafbfc;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    color: #888894;
+
+    font-size: 14px;
+}
+
+
+.history-item {
+
+    border: 1px solid #e9e9ef;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin-top: 12px;
+}
+
+
+.history-item h3 {
+
+    margin-bottom: 8px;
+}
+
+
+.history-item p {
+
+    color: #777;
+
+    margin: 5px 0;
+}
+
+
+.history-result {
+
+    color: #4439d0;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   PAGE EXAMEN
+===================================== */
+
+.exam-header {
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+.exam-header h2 {
+
+    font-size: 25px;
+
+    margin: 15px 0 8px;
+}
+
+
+.exam-header p {
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.no-timer {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    background: #e8f5ff;
+
+    color: #2774a9;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.back-button {
+
+    border: none;
+
+    background: #eeeef8;
+
+    color: #4036a8;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.question-card {
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    display: inline-block;
+
+    color: white;
+
+    background: #5143df;
+
+    padding: 7px 11px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+
+.question-text {
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    font-weight: bold;
+
+    margin-bottom: 17px;
+}
+
+
+.option {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border: 1px solid #eeeeF2;
+
+    border-radius: 10px;
+
+    margin-top: 8px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.option:hover {
+
+    background: #f7f7ff;
+
+    border-color: #bdb8f4;
+}
+
+
+.option input {
+
+    margin-top: 3px;
+
+    accent-color: #5042df;
+}
+
+
+.option span {
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+.finish-button {
+
+    height: 55px;
+
+    margin-top: 10px;
+}
+
+
+/* =====================================
+   RÉSULTAT
+===================================== */
+
+.result-card {
+
+    padding: 40px 25px;
+
+    text-align: center;
+}
+
+
+.result-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #dff7e8;
+
+    color: #188344;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+.result-card h2 {
+
+    font-size: 27px;
+
+    margin-bottom: 10px;
+}
+
+
+.result-card > p {
+
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+.score-box {
+
+    background: #f5f4ff;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+.score-box span {
+
+    display: block;
+
+    color: #777;
+
+    margin-bottom: 10px;
+}
+
+
+.score-box strong {
+
+    display: block;
+
+    font-size: 42px;
+
+    color: #4438cf;
+
+    margin-bottom: 7px;
+}
+
+
+.score-box small {
+
+    color: #777;
+}
+
+
+.statistics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.statistics div {
+
+    background: #fafafa;
+
+    border: 1px solid #eeeeef;
+
+    border-radius: 14px;
+
+    padding: 15px 8px;
+}
+
+
+.statistics strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    color: #4037c7;
+
+    margin-bottom: 5px;
+}
+
+
+.statistics span {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+.result-button {
+
+    max-width: 400px;
+
+    margin: auto;
+}
+
+
+/* =====================================
+   PARAMÈTRES
+===================================== */
+
+.settings-card {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    padding: 28px;
+}
+
+
+.settings-card h2 {
+
+    margin: 20px 0 25px;
+
+    font-size: 25px;
+}
+
+
+.settings-card input {
+
+    margin-bottom: 20px;
+}
+
+
+.switch-label {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 20px 0 !important;
+
+    font-weight: normal !important;
+}
+
+
+.switch-label input {
+
+    width: 20px;
+
+    height: 20px;
+
+    margin: 0;
+}
+
+
+/* =====================================
+   MODE SOMBRE
+===================================== */
+
+body.dark {
+
+    background: #151525;
+
+    color: #eeeeF7;
+}
+
+
+body.dark .student-card,
+body.dark .subjects-card,
+body.dark .history-card,
+body.dark .exam-header,
+body.dark .question-card,
+body.dark .result-card,
+body.dark .settings-card,
+body.dark .subject {
+
+    background: #222236;
+
+    color: #eeeeF7;
+
+    border-color: #36364d;
+}
+
+
+body.dark .student-card h2,
+body.dark .subject h3 {
+
+    color: white;
+}
+
+
+body.dark .description,
+body.dark .student-card p,
+body.dark .subject p,
+body.dark .exam-header p {
+
+    color: #bbbbc8;
+}
+
+
+body.dark .empty-history {
+
+    background: #29293d;
+
+    border-color: #3a3a50;
+}
+
+
+body.dark .option {
+
+    border-color: #3a3a50;
+
+    background: #252538;
+}
+
+
+body.dark .score-box {
+
+    background: #292844;
+}
+
+
+body.dark .statistics div {
+
+    background: #28283b;
+
+    border-color: #3a3a50;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 700px) {
+
+    .login-page {
+
+        padding: 15px;
+
+        justify-content: center;
+    }
+
+
+    .login-card {
+
+        padding: 25px 20px;
+
+        border-radius: 19px;
+    }
+
+
+    .login-header {
+
+        align-items: flex-start;
+    }
+
+
+    .login-header h1 {
+
+        font-size: 23px;
+    }
+
+
+    .login-header p {
+
+        font-size: 13px;
+    }
+
+
+    .identification {
+
+        padding: 10px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .navbar {
+
+        padding: 10px 12px;
+
+        flex-wrap: wrap;
+
+        min-height: auto;
+    }
+
+
+    .nav-title {
+
+        width: 100%;
+
+        font-size: 14px;
+    }
+
+
+    .nav-right {
+
+        width: 100%;
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .nav-right span {
+
+        margin-right: auto;
+    }
+
+
+    .nav-right button {
+
+        font-size: 11px;
+
+        padding: 8px 9px;
+    }
+
+
+    .container {
+
+        padding: 15px 12px 50px;
+    }
+
+
+    .student-card,
+    .subjects-card,
+    .history-card {
+
+        padding: 20px;
+
+        border-radius: 17px;
+    }
+
+
+    .student-card h2 {
+
+        font-size: 23px;
+    }
+
+
+    .subjects-card h2,
+    .history-card h2 {
+
+        font-size: 20px;
+    }
+
+
+    .subject {
+
+        padding: 15px;
+    }
+
+
+    .subject h3 {
+
+        font-size: 17px;
+
+        line-height: 1.4;
+    }
+
+
+    .exam-header {
+
+        padding: 20px;
+    }
+
+
+    .exam-header h2 {
+
+        font-size: 21px;
+
+        line-height: 1.4;
+    }
+
+
+    .question-card {
+
+        padding: 17px;
+    }
+
+
+    .question-text {
+
+        font-size: 15px;
+    }
+
+
+    .statistics {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 8px;
+    }
+
+
+    .statistics div {
+
+        padding: 12px;
+    }
+
+
+    .result-card {
+
+        padding: 30px 18px;
+    }
+
+
+    .score-box strong {
+
+        font-size: 37px;
+    }
+
+}
+
+
+/* =====================================
+   TRÈS PETITS ÉCRANS
+===================================== */
+
+@media (max-width: 380px) {
+
+    .login-header {
+
+        flex-direction: column;
+    }
+
+
+    .identification {
+
+        align-self: flex-start;
+    }
+
+
+    .nav-right span {
+
+        width: 100%;
+
+        margin-bottom: 4px;
+    }
+
+}
